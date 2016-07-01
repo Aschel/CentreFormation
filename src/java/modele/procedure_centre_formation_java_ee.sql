@@ -177,6 +177,39 @@ BEGIN
 	END;
 END§
 
+DELIMITER §
+
+-- prénom capitalisé
+
+DROP TRIGGER IF EXISTS personne_before_update_trigger§
+CREATE TRIGGER personne_before_update_trigger
+BEFORE UPDATE ON personne
+FOR EACH ROW
+BEGIN
+ SET NEW.prenom = trim(initcap(NEW.prenom));
+END§
+ 
+ -- nom en majuscule
+
+DROP TRIGGER IF EXISTS personne_before_update_trigger§
+CREATE TRIGGER personne_before_update_trigger
+BEFORE UPDATE ON personne
+FOR EACH ROW
+BEGIN
+ SET NEW.nom = trim(MAJ(NEW.nom));
+ END§
+ 
+ 
+ -- adresse email sans espace
+
+DROP TRIGGER IF EXISTS personne_before_update_trigger§
+CREATE TRIGGER personne_before_update_trigger
+BEFORE UPDATE ON personne
+FOR EACH ROW
+BEGIN
+ SET NEW.email = trim(NEW.email);
+END§
+
 
 -- Peupler la base avec les données
 CALL centre_formation_refresh()§
