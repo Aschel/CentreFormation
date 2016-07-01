@@ -14,6 +14,8 @@ import java.sql.SQLException;
  */
 public class Projet {
     private int id;
+    private int idPromotion;
+    private int idCreateur;
 
     public int getId() {
         return id;
