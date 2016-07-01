@@ -14,6 +14,8 @@ import java.sql.SQLException;
  */
 public class Projet {
     private int id;
+    private int idPromotion;
+    private int idCreateur;
 
     public int getId() {
         return id;
@@ -24,10 +26,58 @@ public class Projet {
     }
     
 
-    String sujet;
-    String titre;
-    Date dateCreation;
-    Date dateLimite;
+    private String sujet;
+    private String titre;
+    private Date dateCreation;
+    private Date dateLimite;
+
+    public int getIdPromotion() {
+        return idPromotion;
+    }
+
+    public void setIdPromotion(int idPromotion) {
+        this.idPromotion = idPromotion;
+    }
+
+    public int getIdCreateur() {
+        return idCreateur;
+    }
+
+    public void setIdCreateur(int idCreateur) {
+        this.idCreateur = idCreateur;
+    }
+
+    public String getSujet() {
+        return sujet;
+    }
+
+    public void setSujet(String sujet) {
+        this.sujet = sujet;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateLimite() {
+        return dateLimite;
+    }
+
+    public void setDateLimite(Date dateLimite) {
+        this.dateLimite = dateLimite;
+    }
     
     
     public void insert() throws SQLException{
