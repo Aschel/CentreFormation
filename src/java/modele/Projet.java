@@ -22,8 +22,8 @@ public class Projet {
     public void setId(int id) {
         this.id = id;
     }
+   
     
-
     String sujet;
     String titre;
     Date dateCreation;
