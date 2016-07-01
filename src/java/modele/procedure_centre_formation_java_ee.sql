@@ -179,7 +179,39 @@ END§
 
 DELIMITER §
 
--- prénom capitalisé
+-- prénom capitalisé en INSERT
+
+DROP TRIGGER IF EXISTS personne_before_update_trigger§
+CREATE TRIGGER personne_before_update_trigger
+BEFORE INSERT ON personne
+FOR EACH ROW
+BEGIN
+ SET NEW.prenom = trim(initcap(NEW.prenom));
+END§
+ 
+ -- nom en majuscule en INSERT
+
+DROP TRIGGER IF EXISTS personne_before_update_trigger§
+CREATE TRIGGER personne_before_update_trigger
+BEFORE INSERT ON personne
+FOR EACH ROW
+BEGIN
+ SET NEW.nom = trim(MAJ(NEW.nom));
+ END§
+ 
+ 
+ -- adresse email sans espace en INSERT
+
+DROP TRIGGER IF EXISTS personne_before_update_trigger§
+CREATE TRIGGER personne_before_update_trigger
+BEFORE INSERT ON personne
+FOR EACH ROW
+BEGIN
+ SET NEW.email = trim(NEW.email);
+END§
+
+
+-- prénom capitalisé en UPDATE
 
 DROP TRIGGER IF EXISTS personne_before_update_trigger§
 CREATE TRIGGER personne_before_update_trigger
@@ -189,7 +221,7 @@ BEGIN
  SET NEW.prenom = trim(initcap(NEW.prenom));
 END§
  
- -- nom en majuscule
+ -- nom en majuscule en UPDATE
 
 DROP TRIGGER IF EXISTS personne_before_update_trigger§
 CREATE TRIGGER personne_before_update_trigger
@@ -200,7 +232,7 @@ BEGIN
  END§
  
  
- -- adresse email sans espace
+ -- adresse email sans espace en UPDATE
 
 DROP TRIGGER IF EXISTS personne_before_update_trigger§
 CREATE TRIGGER personne_before_update_trigger
