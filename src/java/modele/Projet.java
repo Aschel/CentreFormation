@@ -13,7 +13,15 @@ import java.sql.SQLException;
  * @author user
  */
 public class Projet {
-    Integer id;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 
     String sujet;
