@@ -5,7 +5,7 @@ import java.sql.*;
 public class Database {
 
   protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
-  protected static final String URL = "jdbc:mysql://localhost/produits";
+  protected static final String URL = "jdbc:mysql://localhost/centre_formation";
   protected static final String USER = "root";
   protected static final String PASSWORD = "";
 
