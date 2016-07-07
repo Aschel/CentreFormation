@@ -38,5 +38,5 @@ public class ProjetTest {
         Projet result = Projet.getById(1);
         assertEquals(expected, result);
     }
-
+ 
 }
