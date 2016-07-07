@@ -6,7 +6,7 @@
 package modele;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +40,7 @@ public class Projet {
         Projet result = null;
         Connection connection = Database.getConnection();
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM produit WHERE id_projet=" + id);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM projet WHERE id_projet=" + id);
         if (rs.next()) {
             result = new Projet(id, rs.getInt("id_promotion"), rs.getInt("id_createur"), rs.getString("sujet"), rs.getString("titre"), rs.getDate("date_creation"), rs.getDate("date_limite"));
         }
@@ -48,6 +48,10 @@ public class Projet {
         stmt.close();
         connection.close();
         return result;
+    }
+
+    Projet() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {
@@ -106,6 +110,7 @@ public class Projet {
         this.dateLimite = dateLimite;
     }
 
+    /*
     public void insert() throws SQLException {
         //assert nom != null && !nom.matches("/^ \t\n\r$");
         Connection connection = Database.getConnection();
@@ -135,6 +140,6 @@ public class Projet {
         } finally {
             connection.close();
         }
-
+*/
     }
 }
