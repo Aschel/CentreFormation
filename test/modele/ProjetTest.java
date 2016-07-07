@@ -30,7 +30,7 @@ public class ProjetTest {
         int id = 0;
         String strDeb = "2016-06-11 00:00:00";
         String strFin = "2017-07-01 00:00:00";
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         Date dateDeb = formatter.parse(strDeb);
         Date dateFin = formatter.parse(strFin);
 
