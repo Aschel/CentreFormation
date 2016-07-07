@@ -83,13 +83,13 @@ public class Personne {
         Personne result = null;
         if ((login.trim().equals("") == false) && (password.trim().equals("") == false)) {
             Connection connection = Database.getConnection();
-            String sql = "SELECT * FROM personne WHERE login = ? and password = ?";
+            String sql = "SELECT * FROM personne WHERE email = ? and password = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, login);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                result = new Personne(rs.getInt("id_personne"), rs.getString("login"), rs.getString("password"));
+                result = new Personne(rs.getInt("id_personne"), rs.getString("email"), rs.getString("password"));
             }
             rs.close();
             stmt.close();
