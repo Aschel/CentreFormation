@@ -10,20 +10,20 @@
 
         <form method="post">
 
-            Promotion : <input type="text" name="nom" value="${param['promotion']}">
+            Promotion : <input type="text" name="promotion" value="${param['promotion']}">
             <br>
             <br>
 
 
-            Sujet : <input type="number" name="prix" value="${param['sujet']}">
+            Sujet : <input type="number" name="sujet" value="${param['sujet']}">
             <br>
             <br>
 
-            Titre : <input type="text" name="nom" value="${param['titre']}">
+            Titre : <input type="text" name="titre" value="${param['titre']}">
             <br>
             <br>
 
-            Date Limite : <input type="text" name="nom" value="${param['dateLimite']}">
+            Date Limite : <input type="text" name="dateLimite" value="${param['dateLimite']}">
             <br>
             <br>
 

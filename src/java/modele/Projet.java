@@ -13,6 +13,7 @@ import java.sql.SQLException;
  * @author user
  */
 public class Projet {
+
     private int id;
     private int idPromotion;
     private int idCreateur;
@@ -20,7 +21,7 @@ public class Projet {
     private String titre;
     private Date dateCreation;
     private Date dateLimite;
-    
+
     public int getId() {
         return id;
     }
@@ -77,12 +78,11 @@ public class Projet {
         this.dateLimite = dateLimite;
     }
 
-    
-    public void insert() throws SQLException{
-            
-            }
-    
-    public static Projet getById(int id){
+    public void insert() throws SQLException {
+
+    }
+
+    public static Projet getById(int id) {
         throw new UnsupportedOperationException("pas implémenté");
     }
 }
