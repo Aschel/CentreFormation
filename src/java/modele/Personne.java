@@ -20,7 +20,7 @@ public class Personne {
     String email;
     String password;
 
-    public Personne(Integer id_personne, String nom, String prenom, String email, String login, String password) {
+    public Personne(Integer id_personne, String nom, String prenom, String email, String password) {
         this.id = id_personne;
         this.nom = nom;
         this.prenom = prenom;
@@ -89,7 +89,7 @@ public class Personne {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                result = new Personne(rs.getInt("id_personne"), rs.getString("email"), rs.getString("password"));
+                result = new Personne(rs.getInt("id_personne"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"));
             }
             rs.close();
             stmt.close();

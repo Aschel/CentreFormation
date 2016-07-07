@@ -110,6 +110,7 @@ public class Projet {
         this.dateLimite = dateLimite;
     }
 
+    
     /*
     public void insert() throws SQLException {
         //assert nom != null && !nom.matches("/^ \t\n\r$");

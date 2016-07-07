@@ -27,7 +27,7 @@ import org.apache.taglibs.standard.functions.Functions;
 public class ConnectionServlet extends HttpServlet {
 
     private static final String VUE_FORM = "WEB-INF/connection.jsp";
-    private static final String VUE_OK = "index.html";
+    private static final String VUE_OK = "index.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

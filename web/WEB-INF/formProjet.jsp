@@ -11,26 +11,25 @@
         <p:header/>
         <form method="post">
 
-            Promotion : <input type="text" name="promotion" value="${param['promotion']}">
-            <br>
-            <br>
-
-
-            Sujet : <input type="number" name="sujet" value="${param['sujet']}">
+            Promotion : <input type="number" name="promotion" value="${param['promotion']}">
             <br>
             <br>
 
             Titre : <input type="text" name="titre" value="${param['titre']}">
             <br>
             <br>
+            
+            Sujet : <input type="text" name="sujet" value="${param['sujet']}">
+            <br>
+            <br>
 
-            Date Limite : <input type="text" name="dateLimite" value="${param['dateLimite']}">
+            Date Limite : <input type="date" name="dateLimite" value="${param['dateLimite']}">
             <br>
             <br>
 
 
             <div class="button">
-                <button type="submit" id="prix">Créer projet</button>
+                <button type="submit" id="projet">Créer projet</button>
             </div>
 
         </form>

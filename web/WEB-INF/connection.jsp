@@ -29,7 +29,7 @@
 
                 </c:if>
                 <c:if test="${sessionScope['user'] != null}">
-                    <br><button name="action" value="deconnecter" type="submit">Deconnecter ${sessionScope['user'].getLogin()}</button>
+                    <br><button name="action" value="deconnecter" type="submit">Deconnecter</button>
                 </c:if>
             </form>
         </body> 
