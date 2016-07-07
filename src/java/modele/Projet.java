@@ -5,8 +5,11 @@
  */
 package modele;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -22,6 +25,31 @@ public class Projet {
     private Date dateCreation;
     private Date dateLimite;
 
+    public Projet(int id, int idPromotion, int idCreateur, String sujet, String titre, Date dateCreation, Date dateLimite) {
+        this.id = id;
+        this.idPromotion = idPromotion;
+        this.idCreateur = idCreateur;
+        this.sujet = sujet;
+        this.titre = titre;
+        this.dateCreation = dateCreation;
+        this.dateLimite = dateLimite;
+    }
+
+    public static Projet getById(int id) throws SQLException {
+        Projet result = null;
+        Connection connection = Database.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM produit WHERE id_projet=" + id);
+        if (rs.next()) {
+            result = new Projet(id, rs.getInt("no_produit"), rs.getString("nom"), rs.getDouble("prix"));
+        }
+        rs.close();
+        stmt.close();
+        connection.close();
+        return result;
+    }
+    
+    
     public int getId() {
         return id;
     }
@@ -82,7 +110,5 @@ public class Projet {
 
     }
 
-    public static Projet getById(int id) {
-        throw new UnsupportedOperationException("pas implémenté");
-    }
+    
 }
