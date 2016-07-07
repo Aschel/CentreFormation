@@ -51,7 +51,7 @@ public class CreerProjetServlet extends HttpServlet {
             String sujet = request.getParameter("sujet");
             Date dateLimite = Date.valueOf(request.getParameter("dateLimite"));
             Projet projet= new Projet(-1,idPromotion,idCreateur,sujet,titre,null,dateLimite);
-            projet.insert();
+            //projet.insert();
         }
     }
 }
