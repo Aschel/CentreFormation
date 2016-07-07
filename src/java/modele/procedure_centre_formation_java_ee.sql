@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS personne (
   nom VARCHAR(45) NOT NULL,
   prenom VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
   PRIMARY KEY (id_personne),
   UNIQUE INDEX email_UNIQUE (email ASC))
 ENGINE = InnoDB§
@@ -127,17 +128,17 @@ BEGIN
         (1,'Mars2016'),
         (2,'Juin2016');
         
-		INSERT INTO personne (id_personne,nom,prenom,email) VALUES
-        (1,'Jean','Fete','jean.feyte@test.fr'),
-        (2,'Jacques','Tata','jacques.tata@essai.com'),
-        (3,'Flo','Feyte','flo.feyte@gmail.com'),
-        (4,'Bob','Gob','bob.gob@jeu.fr'),
-        (5,'Alex','Click','alex.click@fail.fr'),
-        (6,'Rey','Tour','reytourn@test.com'),
-        (7,'Poupee','Love','poupee@reves.fr'),
-        (8,'Anna','Mont','anna.mont@nana.com'),
-        (9,'Form','Premier','premierform@formateur.com'),
-        (10,'Chef','Capitain','capitaine@cefisi.fr');
+		INSERT INTO personne (id_personne,nom,prenom,email,password) VALUES
+        (1,'Jean','Feyte','jean.feyte@test.fr','aversion'),
+        (2,'Jacques','Tata','jacques.tata@essai.com','bibliotheque'),
+        (3,'Flo','Feyte','flo.feyte@gmail.com','carbonara'),
+        (4,'Bob','Gob','bob.gob@jeu.fr','deltaplane'),
+        (5,'Alex','Click','alex.click@fail.fr','eclipse'),
+        (6,'Rey','Tour','reytourn@test.com','formation'),
+        (7,'Poupee','Love','poupee@reves.fr','gravier'),
+        (8,'Anna','Mont','anna.mont@nana.com','helicoptere'),
+        (9,'Form','Premier','premierform@formateur.com','invisible'),
+        (10,'Chef','Capitain','capitaine@cefisi.fr','juriste');
         
         INSERT INTO membre_promotion(id_promotion,id_personne) VALUES
         (1,1),

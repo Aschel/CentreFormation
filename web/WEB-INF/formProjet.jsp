@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="p" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +8,7 @@
         <title>Création d'un projet</title>
     </head>
     <body>   
-
+        <p:header/>
         <form method="post">
 
             Promotion : <input type="text" name="promotion" value="${param['promotion']}">
