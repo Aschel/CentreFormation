@@ -51,9 +51,6 @@ public class Projet {
         return result;
     }
 
-    public Projet() {
-     //   return Project();
-    }
 
     public int getId() {
         return id;

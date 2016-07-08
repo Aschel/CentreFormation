@@ -201,6 +201,9 @@ CREATE TRIGGER trigger_update_personne
 BEFORE UPDATE ON personne
 FOR EACH ROW
 BEGIN
+ -- prénom capitalisé en INSERT
+ SET NEW.prenom = trim(initcap(NEW.prenom));
+ 
  -- nom en majuscule en UPDATE
  SET NEW.nom = trim(MAJ(NEW.nom));
 
@@ -208,9 +211,9 @@ BEGIN
  SET NEW.email = trim(NEW.email);
 END§
 
-DROP TRIGGER IF EXISTS trigger_update_projet§
-CREATE TRIGGER trigger_update_projet
-BEFORE UPDATE ON projet
+DROP TRIGGER IF EXISTS trigger_insert_projet§
+CREATE TRIGGER trigger_insert_projet
+BEFORE INSERT ON projet
 FOR EACH ROW
 BEGIN
 -- projet sans date de début en UPDATE
