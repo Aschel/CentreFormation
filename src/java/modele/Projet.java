@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -37,6 +39,20 @@ public class Projet {
         this.dateLimite = dateLimite;
     }
 
+    public static List<Projet> getProjets() throws SQLException {
+        List<Projet> result = new ArrayList<Projet>();
+        Connection connection = Database.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM projet");
+        while (rs.next()){
+            result.add(new Projet(rs.getInt("id_projet"),rs.getInt("id_promotion"),rs.getInt("id-createur"),rs.getString("sujet"),rs.getString("titre"),rs.getDate("date_creation"),rs.getDate("date_limite")));
+        }
+        rs.close();
+        stmt.close();
+        connection.close();
+        return result;
+    }
+    
     public static Projet getById(int id) throws SQLException {
         Projet result = null;
         Connection connection = Database.getConnection();

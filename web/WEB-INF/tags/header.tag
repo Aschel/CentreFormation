@@ -5,6 +5,7 @@
 <%@attribute name="message"%>
 
 <%-- any content can be specified here e.g.: --%>
+<style>.bouton{border-style:double;padding:10px 30px 10px 30px}</style>
 <c:if test="${sessionScope['user'] == null}">
     <h2>Authentification</h2>
 </c:if>
@@ -23,9 +24,9 @@
 
                 </c:if>
                 <c:if test="${sessionScope['user'] != null}">
-                <td><button style="font-size: 150%" type="button" value="projets">Mes projets</button></td>
-                <td><button style="font-size: 150%" type="button" value="creerProjet">Créer un projet</button></td>
-                <td><button style="font-size: 150%" type="button" value="promos">Mes promotions</button></td>
+                <td><a class="bouton" href="projets">Mes projets</a></td>
+                <td><a class="bouton" href="creerprojet">Créer un projet</a></td>
+                <td><a class="bouton" href="promos">Mes promotions</a></td>
                 <td>Bienvenue ${sessionScope['user'].getNom()} ${sessionScope['user'].getPrenom()} <br/>
                     <button name="action" value="deconnecter" type="submit">Se déconnecter</button></td>
 
