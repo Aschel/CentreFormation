@@ -179,10 +179,8 @@ BEGIN
 END§
 
 DELIMITER §
-
-
-DROP TRIGGER IF EXISTS trigger_insert§
-CREATE TRIGGER trigger_insert
+DROP TRIGGER IF EXISTS trigger_insert_personne§
+CREATE TRIGGER trigger_insert_personne
 BEFORE INSERT ON personne
 FOR EACH ROW
 BEGIN
@@ -194,17 +192,12 @@ BEGIN
   
   -- adresse email sans espace en INSERT
    SET NEW.email = trim(NEW.email);
-
--- projet sans date en INSERT
- SET NEW.date_debut = NOW();
 END§
- 
+
 
 DELIMITER §
-
-
-DROP TRIGGER IF EXISTS trigger_update§
-CREATE TRIGGER trigger_update
+DROP TRIGGER IF EXISTS trigger_update_personne§
+CREATE TRIGGER trigger_update_personne
 BEFORE UPDATE ON personne
 FOR EACH ROW
 BEGIN
@@ -213,12 +206,16 @@ BEGIN
 
  -- adresse email sans espace en UPDATE
  SET NEW.email = trim(NEW.email);
-
--- projet sans date en UPDATE
- SET NEW.date_debut = NOW();
 END§
 
-
+DROP TRIGGER IF EXISTS trigger_update_projet§
+CREATE TRIGGER trigger_update_projet
+BEFORE UPDATE ON projet
+FOR EACH ROW
+BEGIN
+-- projet sans date de début en UPDATE
+ SET NEW.date_debut = NOW();
+END§
 
 -- Peupler la base avec les données
 CALL centre_formation_refresh()§
