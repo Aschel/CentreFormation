@@ -82,8 +82,11 @@ public class CreerProjetServlet extends HttpServlet {
                 }
             } catch (NumberFormatException ex) {
                 request.setAttribute("erreurPromo2", "Format invalide");
+                request.getRequestDispatcher("WEB-INF/formProjet.jsp").forward(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(CreerProjetServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("erreurPromo2", ex.getMessage());
+                request.getRequestDispatcher("WEB-INF/formProjet.jsp").forward(request, response);
             }
         }
     }

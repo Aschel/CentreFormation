@@ -185,7 +185,7 @@ BEFORE INSERT ON personne
 FOR EACH ROW
 BEGIN
 -- prénom capitalisé en INSERT
- SET NEW.prenom = trim(initcap(NEW.prenom));
+	SET NEW.prenom = INITCAP(trim(NEW.prenom));
 
 -- nom en majuscule en INSERT
   SET NEW.nom = trim(MAJ(NEW.nom));
@@ -214,7 +214,7 @@ BEFORE UPDATE ON projet
 FOR EACH ROW
 BEGIN
 -- projet sans date de début en UPDATE
- SET NEW.date_debut = NOW();
+ SET NEW.date_creation = NOW();
 END§
 
 -- Peupler la base avec les données

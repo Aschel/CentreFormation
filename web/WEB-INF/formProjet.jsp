@@ -6,26 +6,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Création d'un projet</title>
+        <style>.error{color:red;}</style>
     </head>
     <body>   
         <p:header/>
         <form method="post">
 
             Promotion : <input type="number" name="promotion" value="${param['promotion']}">
-            ${erreurPromo}
-            ${erreurPromo2}
+            <span class="error">${erreurPromo}
+                ${erreurPromo2}</span>
             <br>
             <br>
             Titre : <input type="text" name="titre" value="${param['titre']}">
-            ${erreurTitre}
+            <span class="error">${erreurTitre}</span>
             <br>
             <br>
             Sujet : <input type="text" name="sujet" value="${param['sujet']}">
-            ${erreurSujet}
+            <span class="error">${erreurSujet}</span>
             <br>
             <br>
             Date Limite : <input type="date" name="dateLimite" value="${param['dateLimite']}">
-            ${erreurDate}
+            <span class="error">${erreurDate}</span>
             <br>
             <br>
 

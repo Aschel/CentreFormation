@@ -5,7 +5,9 @@
 <%@attribute name="message"%>
 
 <%-- any content can be specified here e.g.: --%>
-<h2>Authentification</h2>
+<c:if test="${sessionScope['user'] == null}">
+    <h2>Authentification</h2>
+</c:if>
 <form action="connection" method="POST">
     <table style="width:100%">
         <tr>
@@ -21,14 +23,14 @@
 
                 </c:if>
                 <c:if test="${sessionScope['user'] != null}">
-                <td><button style="font-size: 150%" name="projets" value="projets">Mes projets</button></td>
-                <td><button style="font-size: 150%" name="creerProjet" value="creerProjet">Créer un projet</button></td>
-                <td><button style="font-size: 150%" name="promos" value="promos">Mes promotions</button></td>
+                <td><button style="font-size: 150%" type="button" value="projets">Mes projets</button></td>
+                <td><button style="font-size: 150%" type="button" value="creerProjet">Créer un projet</button></td>
+                <td><button style="font-size: 150%" type="button" value="promos">Mes promotions</button></td>
                 <td>Bienvenue ${sessionScope['user'].getNom()} ${sessionScope['user'].getPrenom()} <br/>
                     <button name="action" value="deconnecter" type="submit">Se déconnecter</button></td>
-                
-        </c:if> 
-        </td>
+
+            </c:if> 
+            </td>
         </tr>
     </table>
 </form>
