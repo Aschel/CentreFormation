@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.Date;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,8 +17,8 @@ public class ProjetTest {
     @Test
     public void testInsert() throws Exception {
         System.out.println("insert");
-        Projet instance = new Projet();
-        //instance.insert();
+        Projet instance = new Projet(-1, 1, 1,  "truc", "bidule", Date.valueOf("2016-01-01"), Date.valueOf("2016-02-01"));
+        instance.insert();
         assertEquals(4, instance.getId());
         Projet expected = Projet.getById(4);
         assertEquals(expected, instance);
@@ -28,12 +28,10 @@ public class ProjetTest {
     public void testGetById() throws SQLException, ParseException {
         System.out.println("getById");
         int id = 0;
-        String strDeb = "2016-06-11 00:00:00";
-        String strFin = "2017-07-01 00:00:00";
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        Date dateDeb = formatter.parse(strDeb);
-        Date dateFin = formatter.parse(strFin);
-
+        String strDeb = "2016-06-11";
+        String strFin = "2017-07-01";
+        Date dateDeb = Date.valueOf(strDeb);
+        Date dateFin = Date.valueOf(strFin);
         Projet expected = new Projet(1, 1, 10, "Organisation du projet de creation web", "Organisation", dateDeb, dateFin); //avec valeur du 1
         Projet result = Projet.getById(1);
         assertEquals(expected, result);

@@ -6,11 +6,12 @@
 package modele;
 
 import java.sql.Connection;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 /**
  *
@@ -50,8 +51,8 @@ public class Projet {
         return result;
     }
 
-    Projet() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Projet() {
+     //   return Project();
     }
 
     public int getId() {
@@ -110,24 +111,23 @@ public class Projet {
         this.dateLimite = dateLimite;
     }
 
-    
-    /*
     public void insert() throws SQLException {
-        //assert nom != null && !nom.matches("/^ \t\n\r$");
         Connection connection = Database.getConnection();
         // Commencer une transaction
         connection.setAutoCommit(false);
         try {
             // Inserer le projet
-            String sql = "INSERT INTO projet(sujet, titre) VALUES(?, ?)";
+            String sql = "INSERT INTO projet(id_promotion, id_createur, sujet, titre) VALUES(?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, sujet);
-            stmt.setString(2, titre);
+            stmt.setString(1, Integer.toString(idPromotion));
+            stmt.setString(2, Integer.toString(idCreateur));
+            stmt.setString(3, sujet);
+            stmt.setString(4, titre);
             stmt.executeUpdate();
             stmt.close();
-            // Recuperer le id
+            // Recuperer l'id
             Statement maxStmt = connection.createStatement();
-            ResultSet rs = maxStmt.executeQuery("SELECT MAX(no_produit) AS id FROM produit");
+            ResultSet rs = maxStmt.executeQuery("SELECT MAX(id_projet) AS id FROM projet");
             rs.next();
             id = rs.getInt("id");
             rs.close();
@@ -141,5 +141,54 @@ public class Projet {
         } finally {
             connection.close();
         }
-*/
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + this.idPromotion;
+        hash = 97 * hash + this.idCreateur;
+        hash = 97 * hash + Objects.hashCode(this.sujet);
+        hash = 97 * hash + Objects.hashCode(this.titre);
+        hash = 97 * hash + Objects.hashCode(this.dateCreation);
+        hash = 97 * hash + Objects.hashCode(this.dateLimite);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Projet other = (Projet) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.idPromotion != other.idPromotion) {
+            return false;
+        }
+        if (this.idCreateur != other.idCreateur) {
+            return false;
+        }
+        if (!Objects.equals(this.sujet, other.sujet)) {
+            return false;
+        }
+        if (!Objects.equals(this.titre, other.titre)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateCreation, other.dateCreation)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateLimite, other.dateLimite)) {
+            return false;
+        }
+        return true;
+    }
+}
