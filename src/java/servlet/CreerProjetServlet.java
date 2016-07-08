@@ -78,7 +78,7 @@ public class CreerProjetServlet extends HttpServlet {
                     Date dateLimite = Date.valueOf(request.getParameter("dateLimite"));
                     Projet projet = new Projet(-1, idPromotion, idCreateur, sujet, titre, null, dateLimite);
                     projet.insert();
-                    response.sendRedirect("projet");
+                    response.sendRedirect("projets");
                 }
             } catch (NumberFormatException ex) {
                 request.setAttribute("erreurPromo2", "Format invalide");

@@ -45,7 +45,7 @@ public class Projet {
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM projet");
         while (rs.next()){
-            result.add(new Projet(rs.getInt("id_projet"),rs.getInt("id_promotion"),rs.getInt("id-createur"),rs.getString("sujet"),rs.getString("titre"),rs.getDate("date_creation"),rs.getDate("date_limite")));
+            result.add(new Projet(rs.getInt("id_projet"),rs.getInt("id_promotion"),rs.getInt("id_createur"),rs.getString("sujet"),rs.getString("titre"),rs.getDate("date_creation"),rs.getDate("date_limite")));
         }
         rs.close();
         stmt.close();
