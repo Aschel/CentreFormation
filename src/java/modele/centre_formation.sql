@@ -180,68 +180,44 @@ END§
 
 DELIMITER §
 
+
+DROP TRIGGER IF EXISTS trigger_insert§
+CREATE TRIGGER trigger_insert
+BEFORE INSERT ON personne
+FOR EACH ROW
+BEGIN
 -- prénom capitalisé en INSERT
-
-DROP TRIGGER IF EXISTS personne_before_update_trigger§
-CREATE TRIGGER personne_before_update_trigger
-BEFORE INSERT ON personne
-FOR EACH ROW
-BEGIN
  SET NEW.prenom = trim(initcap(NEW.prenom));
+
+-- nom en majuscule en INSERT
+  SET NEW.nom = trim(MAJ(NEW.nom));
+  
+  -- adresse email sans espace en INSERT
+   SET NEW.email = trim(NEW.email);
+
+-- projet sans date en INSERT
+ SET NEW.date_debut = NOW();
 END§
  
- -- nom en majuscule en INSERT
 
-DROP TRIGGER IF EXISTS personne_before_update_trigger§
-CREATE TRIGGER personne_before_update_trigger
-BEFORE INSERT ON personne
-FOR EACH ROW
-BEGIN
- SET NEW.nom = trim(MAJ(NEW.nom));
- END§
- 
- 
- -- adresse email sans espace en INSERT
-
-DROP TRIGGER IF EXISTS personne_before_update_trigger§
-CREATE TRIGGER personne_before_update_trigger
-BEFORE INSERT ON personne
-FOR EACH ROW
-BEGIN
- SET NEW.email = trim(NEW.email);
-END§
+DELIMITER §
 
 
--- prénom capitalisé en UPDATE
-
-DROP TRIGGER IF EXISTS personne_before_update_trigger§
-CREATE TRIGGER personne_before_update_trigger
+DROP TRIGGER IF EXISTS trigger_update§
+CREATE TRIGGER trigger_update
 BEFORE UPDATE ON personne
 FOR EACH ROW
 BEGIN
- SET NEW.prenom = trim(initcap(NEW.prenom));
-END§
- 
  -- nom en majuscule en UPDATE
-
-DROP TRIGGER IF EXISTS personne_before_update_trigger§
-CREATE TRIGGER personne_before_update_trigger
-BEFORE UPDATE ON personne
-FOR EACH ROW
-BEGIN
  SET NEW.nom = trim(MAJ(NEW.nom));
- END§
- 
- 
- -- adresse email sans espace en UPDATE
 
-DROP TRIGGER IF EXISTS personne_before_update_trigger§
-CREATE TRIGGER personne_before_update_trigger
-BEFORE UPDATE ON personne
-FOR EACH ROW
-BEGIN
+ -- adresse email sans espace en UPDATE
  SET NEW.email = trim(NEW.email);
+
+-- projet sans date en UPDATE
+ SET NEW.date_debut = NOW();
 END§
+
 
 
 -- Peupler la base avec les données
