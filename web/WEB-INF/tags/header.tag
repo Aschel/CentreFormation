@@ -7,13 +7,10 @@
 <%-- any content can be specified here e.g.: --%>
 <h2>Authentification</h2>
 <form action="connection" method="POST">
-    <table>
+    <table style="width:100%">
         <tr>
-            <td><button style="font-size: 150%" name="projets" value="projets">Mes projets</button></td>
-            <td><button style="font-size: 150%" name="creerProjet" value="creerProjet">Créer un projet</button></td>
-            <td><button style="font-size: 150%" name="promos" value="promos">Mes promotions</button></td>
-            <td>
-                <c:if test="${sessionScope['user'] == null}">
+            <c:if test="${sessionScope['user'] == null}">
+                <td align='Right'>
                     Login <input type="text" name="login" value="${param['login']}">
                     Password <input type="password" name="password" value="${param['password']}" >
                     <button name="action" value="connecter" type="submit">Connection</button><br>
@@ -24,13 +21,15 @@
 
                 </c:if>
                 <c:if test="${sessionScope['user'] != null}">
-                    Bienvenue ${sessionScope['user'].getLogin()}
-                    <button name="action" value="deconnecter" type="submit">Se déconnecter</button>
-                </c:if> 
-            </td>
+                <td><button style="font-size: 150%" name="projets" value="projets">Mes projets</button></td>
+                <td><button style="font-size: 150%" name="creerProjet" value="creerProjet">Créer un projet</button></td>
+                <td><button style="font-size: 150%" name="promos" value="promos">Mes promotions</button></td>
+                <td>Bienvenue ${sessionScope['user'].getNom()} ${sessionScope['user'].getPrenom()} <br/>
+                    <button name="action" value="deconnecter" type="submit">Se déconnecter</button></td>
+                
+        </c:if> 
+        </td>
         </tr>
-
     </table>
-
 </form>
 <hr/>

@@ -12,18 +12,20 @@
         <form method="post">
 
             Promotion : <input type="number" name="promotion" value="${param['promotion']}">
+            ${erreurPromo}
+            ${erreurPromo2}
             <br>
             <br>
-
             Titre : <input type="text" name="titre" value="${param['titre']}">
+            ${erreurTitre}
             <br>
             <br>
-            
             Sujet : <input type="text" name="sujet" value="${param['sujet']}">
+            ${erreurSujet}
             <br>
             <br>
-
             Date Limite : <input type="date" name="dateLimite" value="${param['dateLimite']}">
+            ${erreurDate}
             <br>
             <br>
 
