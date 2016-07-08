@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,10 +77,13 @@ public class CreerProjetServlet extends HttpServlet {
                     String sujet = request.getParameter("sujet");
                     Date dateLimite = Date.valueOf(request.getParameter("dateLimite"));
                     Projet projet = new Projet(-1, idPromotion, idCreateur, sujet, titre, null, dateLimite);
-                    //projet.insert();
+                    projet.insert();
+                    response.sendRedirect("projet");
                 }
             } catch (NumberFormatException ex) {
                 request.setAttribute("erreurPromo2", "Format invalide");
+            } catch (SQLException ex) {
+                Logger.getLogger(CreerProjetServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

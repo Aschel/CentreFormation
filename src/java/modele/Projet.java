@@ -117,12 +117,13 @@ public class Projet {
         connection.setAutoCommit(false);
         try {
             // Inserer le projet
-            String sql = "INSERT INTO projet(id_promotion, id_createur, sujet, titre) VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO projet(id_promotion, id_createur, sujet, titre) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, Integer.toString(idPromotion));
             stmt.setString(2, Integer.toString(idCreateur));
             stmt.setString(3, sujet);
             stmt.setString(4, titre);
+            stmt.setDate(5, dateLimite);
             stmt.executeUpdate();
             stmt.close();
             // Recuperer l'id
